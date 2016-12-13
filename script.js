@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
         for (i = (this.children.length - 1); i > -1; i--) {
             if (this.children[i].value !== player1 && this.children[i].value !== player2) {
                 this.children[i].value = currentPlayer;
-                this.children[i].innerHTML = currentPlayer;
+                this.children[i].textContent = currentPlayer;
                 piecePlayed = true;
                 getColRow(this.children[i].id);
                 currentPlayer = changeTurn(currentPlayer);
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function changeTurn(currentPlayer) {
         currentPlayer = (currentPlayer === player1) ? player2 : player1;
-        $('#currPlay').innerHTML = 'Current player: ' + currentPlayer;
+        $('#currPlay').textContent = 'Current player: ' + currentPlayer;
         return currentPlayer;
     }
 
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function checkForWin2(col, row) {
-        for (col = 3; col < 6; col++) {
+        for (col = 6; col > 3; col--) {
             for (row = 0; row < 2; row++) {
                 checkCells2(col, row);
             }
@@ -88,11 +88,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function areFourCellsEqual(col1, row1, col2, row2, col3, row3, col4, row4) {
         // console.log('parameters', col1, row1, col2, row2, col3, row3, col4, row4);
-        // console.log(getCell(col1, row1).innerHTML);
-        if (getCell(col1, row1).innerHTML === getCell(col2, row2).innerHTML &&
-            getCell(col1, row1).innerHTML === getCell(col3, row3).innerHTML &&
-            getCell(col1, row1).innerHTML === getCell(col4, row4).innerHTML &&
-            getCell(col1, row1).innerHTML !== '') {
+        // console.log(getCell(col1, row1).textContent);
+        if (getCell(col1, row1).textContent === getCell(col2, row2).textContent &&
+            getCell(col1, row1).textContent === getCell(col3, row3).textContent &&
+            getCell(col1, row1).textContent === getCell(col4, row4).textContent &&
+            getCell(col1, row1).textContent !== '') {
             console.log(currentPlayer + ' wins!!!');
             $('#display')[0].textContent = currentPlayer + " wins!!!";
             addPointToScore();
@@ -127,16 +127,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    var restart = document.getElementById('restart').addEventListener('click', function unk() {
-        $('.cell').innerHTML = '';
-        $('.cell').innerText = '';
-        $('.cell').outerText = '';
-        startGame();
-    });
-
     function catsGame() {
         for (i = 0; i < $('.cell').length; i++) {
-            if (($('.cell').innerHTML == player1 | player2) && areFourCellsEqual() === false) {
+            if (($('.cell').textContent == player1 | player2) && areFourCellsEqual() === false) {
                 $('#display')[0].textContent = "Nobody wins, you both lose a point!!!";
                 subtractPointFromScore();
                 gameover();
@@ -150,7 +143,31 @@ document.addEventListener("DOMContentLoaded", function() {
             gameStatus = 0;
         }
     }
+    // $("#restart").click(resetGame);
+    //
+    // function resetGame() {
+    //     currentPlayer = player1;
+    //     cell = $('.cell');
+    //     for (i = 0; i < cell.length; i++) {
+    //         cell.value = '';
+    //         cell.innerHTML = '';
+    //         startGame();
+    //     }
+    // }
+    // $("#newMatch").click(resetMatch);
+    //
+    // function resetMatch() {
+    //     scorePlayer1 = 0;
+    //     scorePlayer2 = 0;
+    //     resetGame();
+    // }
 });
+// function hover() {
+//     if ($('.columns').hover) {
+//         $(this).css("background-color", "yellow");
+//     }
+// }
+
 
 // function checkForWin(col, row) {
 //     for (col = 0; col < 6; col++) {
