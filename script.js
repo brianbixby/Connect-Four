@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
         player2 = 'o';
     unplayed = '';
     var currentPlayer = player1;
+    var scoreplayer1 = 0;
+    var scoreplayer2 = 0;
+    var gameStatus = 0; // 0 is not currently in a game and 1 is currently in a game
     var winner;
     var ai;
     var play = document.getElementById('play').addEventListener('click', startGame);
@@ -15,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         for (i = 0; i < columns.length; i++) {
             columns[i].addEventListener('click', columnClicked);
             console.log('columns have event listeners');
+            gameStatus = 1;
         }
     }
 
@@ -33,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {}
         }
         if (piecePlayed === false) {
-            $('#currPlay').innerHTML('Column full; choose another move');
+            $('#currPlay')[0].textContent = 'Column full; choose another move';
         }
         return piecePlayed;
     }
@@ -48,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
         col = parseInt(id.split('-')[0]);
         row = parseInt(id.split('-')[1]);
         // console.log('getColRow works ' + col, row);
-        return checkForWin(col, row);
+        return checkForWin(col, row), checkForWin2(col, row);
     }
 
     function checkForWin(col, row) {
@@ -66,7 +70,19 @@ document.addEventListener("DOMContentLoaded", function() {
         areFourCellsEqual(col, row, col, row + 1, col, row + 2, col, row + 3);
         // checks diagonally
         areFourCellsEqual(col, row, col + 1, row + 1, col + 2, row + 2, col + 3, row + 3);
-        // areFourCellsEqual(col, row, col - 1, row - 1, col - 2, row - 2, col - 3, row - 3);
+    }
+
+    function checkCells2(col, row) {
+        // checks second diagonal
+        areFourCellsEqual(col, row, col - 1, row + 1, col - 2, row + 2, col - 3, row + 3);
+    }
+
+    function checkForWin2(col, row) {
+        for (col = 3; col < 6; col++) {
+            for (row = 0; row < 2; row++) {
+                checkCells2(col, row);
+            }
+        }
     }
 
     function areFourCellsEqual(col1, row1, col2, row2, col3, row3, col4, row4) {
@@ -77,6 +93,11 @@ document.addEventListener("DOMContentLoaded", function() {
             getCell(col1, row1).innerHTML === getCell(col4, row4).innerHTML &&
             getCell(col1, row1).innerHTML !== '') {
             console.log(currentPlayer + ' wins!!!');
+            $('#display')[0].textContent = currentPlayer + " wins!!!";
+            ('score' + currentPlayer) ++;
+            $('#scorePlayer1').textContent = 'Player1 Wins: ' + score.player1;
+            $('#scorePlayer2').textContent = 'Player2 Wins: ' + score.player2;
+            gameStatus = 0;
             return true;
         }
         return false;
@@ -87,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return id;
     }
 
-    var reset = document.getElementById('reset').addEventListener('click', function unk() {
+    var restart = document.getElementById('restart').addEventListener('click', function unk() {
         $('.cell').innerHTML = '';
         $('.cell').innerText = '';
         $('.cell').outerText = '';
