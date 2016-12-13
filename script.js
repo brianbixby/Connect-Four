@@ -3,11 +3,11 @@ console.log('Hello frontend');
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
     var player1 = 'x',
-        player2 = 'o';
-    unplayed = '';
+        player2 = 'o',
+        unplayed = '';
     var currentPlayer = player1;
-    var scoreplayer1 = 0;
-    var scoreplayer2 = 0;
+    var scorePlayer1 = 0;
+    var scorePlayer2 = 0;
     var gameStatus = 0; // 0 is not currently in a game and 1 is currently in a game
     var winner;
     var ai;
@@ -23,9 +23,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function columnClicked() {
-        var piecePlayed = false;
-        //        for (i = 5; i < this.children.length; i--)
-        //    Adjusted loop limits since we're counting down. Test against -1, cuz 0 is a valid array element.
         for (i = (this.children.length - 1); i > -1; i--) {
             if (this.children[i].value !== player1 && this.children[i].value !== player2) {
                 this.children[i].value = currentPlayer;
@@ -34,9 +31,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 getColRow(this.children[i].id);
                 currentPlayer = changeTurn(currentPlayer);
                 break;
-            } else {}
+            } else {
+                piecePlayed = false;
+            }
         }
-        if (piecePlayed === false) {
+        if (piecePlayed === true) {
+            $('#currPlay')[0].textContent = currentPlayer + "/'s move";
+        } else {
             $('#currPlay')[0].textContent = 'Column full; choose another move';
         }
         return piecePlayed;
@@ -94,9 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
             getCell(col1, row1).innerHTML !== '') {
             console.log(currentPlayer + ' wins!!!');
             $('#display')[0].textContent = currentPlayer + " wins!!!";
-            ('score' + currentPlayer) ++;
-            $('#scorePlayer1').textContent = 'Player1 Wins: ' + score.player1;
-            $('#scorePlayer2').textContent = 'Player2 Wins: ' + score.player2;
+            addPointToScore();
             gameStatus = 0;
             return true;
         }
@@ -108,6 +107,26 @@ document.addEventListener("DOMContentLoaded", function() {
         return id;
     }
 
+    function addPointToScore() {
+        if (currentPlayer == player1) {
+            scorePlayer1++;
+            $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
+        } else {
+            scorePlayer2++;
+            $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
+        }
+    }
+
+    function subtractPointFromScore() {
+        if (catsGame() === true) {
+            scorePlayer1--;
+            scorePlayer2--;
+            $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
+        } else {
+            $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
+        }
+    }
+
     var restart = document.getElementById('restart').addEventListener('click', function unk() {
         $('.cell').innerHTML = '';
         $('.cell').innerText = '';
@@ -115,24 +134,24 @@ document.addEventListener("DOMContentLoaded", function() {
         startGame();
     });
 
-    function gameOver() {
-        if (areFourCellsEqual === true) {
+    function catsGame() {
+        for (i = 0; i < $('.cell').length; i++) {
+            if (($('.cell').innerHTML == player1 | player2) && areFourCellsEqual() === false) {
+                $('#display')[0].textContent = "Nobody wins, you both lose a point!!!";
+                subtractPointFromScore();
+                gameover();
+                return true;
+            }
+        }
+    }
 
+    function gameOver() {
+        if (areFourCellsEqual === true | catsGame === true) {
+            gameStatus = 0;
         }
     }
 });
 
-// function getRow(id) {
-//     var row = parseInt(id.split('-')[1]);
-//     return row;
-// }
-
-// function getCol(id) {
-//     var col = parseInt(id.split('-')[0]);
-//     return col;
-// }
-//
-//
 // function checkForWin(col, row) {
 //     for (col = 0; col < 6; col++) {
 //         for (row = 0; row < 5; row++) {
@@ -164,39 +183,4 @@ document.addEventListener("DOMContentLoaded", function() {
 //             return false;
 //         }
 //     }
-// }
-
-
-
-
-
-
-
-
-
-//
-
-
-
-// }
-//
-
-
-//
-//
-// var cell = $('.cell');
-// for (i = 0; i < cell.length; i++) {
-//     xVal = parseInt(cell[i].id.split('-')[0]);
-//     yVal = parseInt(cell[i].id.split('-')[1]);
-//     cellVal = (xVal, yVal);
-//     console.log(cellVal);
-// }
-
-//                 var id = col + "-" + row;
-//     function rc (row, col) {
-//     if (row >= 5 && col >= 6) {
-//         return true;
-//     }
-//     return false;
-// }
 // }
