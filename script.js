@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var player1 = 'x',
         player2 = 'o',
         unplayed = '';
-    var currentPlayer = player1;
     var scorePlayer1 = 0;
     var scorePlayer2 = 0;
     var gameStatus = 0; // 0 is not currently in a game and 1 is currently in a game
@@ -15,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function startGame() {
         var columns = $('.columns');
+        resetGame();
         for (i = 0; i < columns.length; i++) {
             columns[i].addEventListener('click', columnClicked);
             console.log('columns have event listeners');
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         if (piecePlayed === true) {
-            $('#currPlay')[0].textContent = currentPlayer + "/'s move";
+            $('#currPlay')[0].textContent = currentPlayer + '\'s move';
         } else {
             $('#currPlay')[0].textContent = 'Column full; choose another move';
         }
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function checkForWin(col, row) {
-        for (col = 0; col < 3; col++) {
-            for (row = 0; row < 2; row++) {
+        for (col = 0; col < 4; col++) {
+            for (row = 0; row < 3; row++) {
                 checkCells(col, row);
             }
         }
@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
             gameStatus = 0;
             return true;
         }
+        catsGame();
         return false;
     }
 
@@ -116,12 +117,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function catsGame() {
-        for (i = 0; i < $('.cell').length; i++) {
-            if (($('.cell').textContent == player1 | player2) && areFourCellsEqual() === false) {
-                $('#display')[0].textContent = "Nobody wins, you both lose a point!!!";
+        for (i = 0; i < 6; i++) {
+            if ($('#i-5').textContent !== '' && areFourCellsEqual === false) {
+                $('#display')[0].textContent = 'Nobody wins, you both lose a point!!!';
                 subtractPointFromScore();
                 gameover();
                 return true;
+            } else {
+                return false;
             }
         }
     }
@@ -148,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
         currentPlayer = player1;
         for (i = 0; i < $('.cell').length; i++) {
             $('.cell')[i].textContent = '';
+            $('#display')[0].textContent = '';
             // startGame();
         }
     }
