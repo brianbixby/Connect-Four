@@ -24,12 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function columnClicked() {
         for (i = (this.children.length - 1); i > -1; i--) {
-            if (this.children[i].value !== player1 && this.children[i].value !== player2) {
-                this.children[i].value = currentPlayer;
+            if (this.children[i].textContent !== player1 && this.children[i].textContent !== player2) {
                 this.children[i].textContent = currentPlayer;
-                piecePlayed = true;
                 getColRow(this.children[i].id);
                 currentPlayer = changeTurn(currentPlayer);
+                piecePlayed = true;
                 break;
             } else {
                 piecePlayed = false;
@@ -52,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function getColRow(id) {
         col = parseInt(id.split('-')[0]);
         row = parseInt(id.split('-')[1]);
-        // console.log('getColRow works ' + col, row);
         return checkForWin(col, row), checkForWin2(col, row);
     }
 
@@ -60,6 +58,14 @@ document.addEventListener("DOMContentLoaded", function() {
         for (col = 0; col < 3; col++) {
             for (row = 0; row < 2; row++) {
                 checkCells(col, row);
+            }
+        }
+    }
+
+    function checkForWin2(col, row) {
+        for (col = 6; col > 3; col--) {
+            for (row = 0; row < 2; row++) {
+                checkCells2(col, row);
             }
         }
     }
@@ -76,14 +82,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function checkCells2(col, row) {
         // checks second diagonal
         areFourCellsEqual(col, row, col - 1, row + 1, col - 2, row + 2, col - 3, row + 3);
-    }
-
-    function checkForWin2(col, row) {
-        for (col = 6; col > 3; col--) {
-            for (row = 0; row < 2; row++) {
-                checkCells2(col, row);
-            }
-        }
     }
 
     function areFourCellsEqual(col1, row1, col2, row2, col3, row3, col4, row4) {
@@ -117,16 +115,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function subtractPointFromScore() {
-        if (catsGame() === true) {
-            scorePlayer1--;
-            scorePlayer2--;
-            $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
-        } else {
-            $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
-        }
-    }
-
     function catsGame() {
         for (i = 0; i < $('.cell').length; i++) {
             if (($('.cell').textContent == player1 | player2) && areFourCellsEqual() === false) {
@@ -138,30 +126,45 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function subtractPointFromScore() {
+        if (catsGame() === true) {
+            scorePlayer1--;
+            scorePlayer2--;
+            $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
+        } else {
+            $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
+        }
+    }
+
     function gameOver() {
         if (areFourCellsEqual === true | catsGame === true) {
             gameStatus = 0;
         }
     }
-    // $("#restart").click(resetGame);
-    //
-    // function resetGame() {
-    //     currentPlayer = player1;
-    //     cell = $('.cell');
-    //     for (i = 0; i < cell.length; i++) {
-    //         cell.value = '';
-    //         cell.innerHTML = '';
-    //         startGame();
-    //     }
-    // }
-    // $("#newMatch").click(resetMatch);
-    //
-    // function resetMatch() {
-    //     scorePlayer1 = 0;
-    //     scorePlayer2 = 0;
-    //     resetGame();
-    // }
+
+    $("#restart").click(resetGame);
+
+    function resetGame() {
+        currentPlayer = player1;
+        for (i = 0; i < $('.cell').length; i++) {
+            $('.cell')[i].textContent = '';
+            // startGame();
+        }
+    }
+    $("#newMatch").click(resetMatch);
+
+    function resetMatch() {
+        console.log('reset match works');
+        scorePlayer1 = 0;
+        scorePlayer2 = 0;
+        $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
+        $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
+        resetGame();
+    }
 });
+
+
+
 // function hover() {
 //     if ($('.columns').hover) {
 //         $(this).css("background-color", "yellow");
