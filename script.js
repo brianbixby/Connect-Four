@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var scorePlayer1 = 0;
     var scorePlayer2 = 0;
     var gameStatus = 0; // 0 is not currently in a game and 1 is currently in a game
-    var winner;
     var ai;
     var play = document.getElementById('play').addEventListener('click', startGame);
 
@@ -94,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(currentPlayer + ' wins!!!');
             $('#display')[0].textContent = currentPlayer + " wins!!!";
             addPointToScore();
-            gameStatus = 0;
+            gameOver();
             return true;
         }
         catsGame();
@@ -117,11 +116,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function catsGame() {
-        for (i = 0; i < 6; i++) {
-            if ($('#i-5').textContent !== '' && areFourCellsEqual === false) {
+        for (i = ($('.columns').children.length - 1); i > -1; i--) {
+            if ($('.columns')[i].textContent == player1 && $('.columns').children[i].textContent == player2) {
                 $('#display')[0].textContent = 'Nobody wins, you both lose a point!!!';
                 subtractPointFromScore();
-                gameover();
+                console.log('meow');
                 return true;
             } else {
                 return false;
@@ -140,8 +139,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function gameOver() {
-        if (areFourCellsEqual === true | catsGame === true) {
-            gameStatus = 0;
+        var columns = $('.columns');
+        for (i = 0; i < columns.length; i++) {
+            columns[i].removeEventListener('click', columnClicked);
         }
     }
 
