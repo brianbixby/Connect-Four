@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var ai;
     var isGameOver = false;
     var play = document.getElementById('play').addEventListener('click', startGame);
+    var clicks = 0;
 
     function startGame() {
         var columns = $('.columns');
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 getColRow(this.children[i].id);
                 currentPlayer = changeTurn(currentPlayer);
                 piecePlayed = true;
-                click();
+                clickCounter();
                 break;
             } else {
                 piecePlayed = false;
@@ -46,13 +47,12 @@ document.addEventListener("DOMContentLoaded", function() {
         return piecePlayed;
     }
 
-    function click() {
-        clicks = $(".columns");
+    function clickCounter() {
         clicks += 1;
-        if (clicks == 42) {
+        console.log('counter works', clicks);
+        if (clicks > 41) {
             catsGame();
         }
-        console.log(clicks);
         return clicks;
     }
 
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function getColRow(id) {
         col = parseInt(id.split('-')[0]);
         row = parseInt(id.split('-')[1]);
-        return checkForWin(col, row); //, checkForWin2(col, row)
+        return checkForWin(col, row);
     }
 
     function checkForWin(col, row) {
@@ -125,31 +125,18 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function catsGame() {
-        var total = 0;
-        var array = $('.cell');
-        for (var i = 0; i < array.length; i++) {
-            if (array[i].innerHTML) {
-                total++;
-            }
-        }
-        if (total === 42) {
-            $('#display')[0].textContent = 'Nobody wins, you both lose a point!!!';
-            console.log('cats game');
-            subtractPointFromScore();
-            return true;
-        }
+        $('#display')[0].textContent = 'Nobody wins, you both lose a point!!!';
+        console.log('cats game');
+        subtractPointFromScore();
+        gameOver();
     }
 
     function subtractPointFromScore() {
         console.log('subtracting from score');
-        if (catsGame() === true) {
-            scorePlayer1++;
-            scorePlayer2++;
-            $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
-            $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
-        } else {
-            return false;
-        }
+        scorePlayer1--;
+        scorePlayer2--;
+        $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
+        $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
     }
 
     function gameOver() {
