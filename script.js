@@ -18,18 +18,18 @@ document.addEventListener("DOMContentLoaded", function() {
             columns[i].addEventListener('click', columnClicked);
             // console.log('columns have event listeners');
         }
+        // if ($('#1player').checked === true)
+        //     ai = player1;
+        //     aimove();
+        // }
+        resetGame();
     }
-    //     if ($('#1player').checked === true) {
-    //         ai = player1;
-    //         aimove();
-    //     }
-    //     resetGame();
-    // }
     //
     // function aimove() {
-    //   for(currentPlayer = ai) {
-    //     Math.random()
-    //   }
+    //     var b = Math.floor(Math.random() * 7);
+    //     if (currentPlayer = ai) {
+    //         columnClicked('column' + b);
+    //     }
     // }
 
     function columnClicked() {

@@ -1,17 +1,19 @@
 body {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 #wrapper {
-  margin-left 200px;
+  margin: 0 auto;
 }
 #board {
-  width: 790px;
-  height: 680px
-  margin-left: 200px;
+  width: 846px;
+  height: 674px;
+  border: 2px solid black;
+  display: inline-block;
 }
 .columns {
-  height: 780;
+  height: 670;
   width: 670;
   float: left;
   display: inline-block;
@@ -23,15 +25,40 @@ body {
   width: 100px;
   line-height: 100px;
 }
+.cell {
+	background: white;
+	-moz-border-radius: 99%;
+	-webkit-border-radius: 99%;
+	border-radius: 99%;
+  border: 2px solid black;
+  margin: 10px;
+}
 
 #headline {
   color: red;
 }
 
 .columns {
-  background-color: red;
+  background-color: yellow;
 }
 .columns:hover {
   border: 2px solid black;
   background-color: rgba(255, 0, 0, 0.8);
+}
+
+#leftPiece {
+	width: 20px;
+	height: 800px;
+	background: blue;
+  display: inline-block;
+  float: left;
+  border: 2px solid black;
+}
+#rightPiece {
+	width: 20px;
+	height: 800px;
+	background: blue;
+  display: inline-block;
+  float: right;
+  border: 2px solid black;
 }
