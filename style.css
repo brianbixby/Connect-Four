@@ -1,22 +1,46 @@
 body {
   display: flex;
   justify-content: center;
+  background: url('images/7.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 #wrapper {
   margin: 0 auto;
 }
+#topHeader {
+  font-size: 80px;
+  font-family: 'Rock Salt', cursive;
+  text-align: center;
+  color: black;
+  padding-bottom: 20px;
+}
+#nav {
+  font-family: 'Rock Salt', cursive;
+  padding: 10px 0 50px 0;
+  color: black;
+}
 #board {
   width: 846px;
   height: 674px;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   display: inline-block;
+  background: url('images/4.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
+
 .columns {
   height: 670;
   width: 670;
   float: left;
   display: inline-block;
+  /*background-color: yellow;*/
+}
+.columns:hover {
+  border: 0 solid black;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .cell {
   display: block;
@@ -24,41 +48,37 @@ body {
   height: 100px;
   width: 100px;
   line-height: 100px;
-}
-.cell {
-	background: white;
-	-moz-border-radius: 99%;
-	-webkit-border-radius: 99%;
-	border-radius: 99%;
-  border: 2px solid black;
   margin: 10px;
-}
+	background-color: rgba( 0, 0, 0, .2);
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
 
-#headline {
-  color: red;
+  /*border-width: 1px;
+  border-style: solid;
+  border-color: black;*/
 }
-
-.columns {
-  background-color: yellow;
-}
-.columns:hover {
-  border: 2px solid black;
-  background-color: rgba(255, 0, 0, 0.8);
+.piecez {
+  height: 100px;
+  width: 100px;
 }
 
 #leftPiece {
-	width: 20px;
-	height: 800px;
-	background: blue;
+	width: 60px;
+	height: 790px;
+	background: url('images/12.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   display: inline-block;
   float: left;
-  border: 2px solid black;
+  /*margin-bottom: 200px;*/
 }
 #rightPiece {
-	width: 20px;
-	height: 800px;
-	background: blue;
+	width: 60px;
+	height: 790px;
+	background: url('images/12.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   display: inline-block;
   float: right;
-  border: 2px solid black;
 }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Connect Four</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -23,21 +24,24 @@
 <body>
     <div id="wrapper">
         <div id="nav">
-            <h1> Connect Four </h1>
-            <h3 id="headline">Press Play</h3>
-        </div>
-        <div id="score" class="row">
-            <div id="radioButtons">
-                <label><input type="radio" id="2players" name="mode" value="2players" checked> 2 Players</label>
-                <label><input type="radio" id="1player" name="mode" value="1player"> Play against the Computer</label>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 id="topHeader"> Connect Four </h1>
+                </div>
             </div>
-            <button id="play" type="submit">Play/Next </button>
-            <button id="restart" type="reset">Restart this game </button>
-            <button id="newMatch" type="reset">New Match</button>
-            <div id="scorePlayer1" class="scoreBoard">Player1 Wins: 0 </div>
-            <div id="scorePlayer2" class="scoreBoard">Player2 Wins: 0 </div>
-            <div id="currPlay" class="scoreBoard"> </div>
-            <div id="display" class="scoreBoard"> </div>
+            <div id="score" class="row">
+                <div id="radioButtons">
+                    <label><input type="radio" id="2players" name="mode" value="2players" checked> 2 Players</label>
+                    <label><input type="radio" id="1player" name="mode" value="1player"> Play against the Computer</label>
+                </div>
+                <button id="play" type="submit">Play/Next </button>
+                <button id="restart" type="reset">Restart this game </button>
+                <button id="newMatch" type="reset">New Match</button>
+                <div id="scorePlayer1" class="scoreBoard">Player1 Wins: 0 </div>
+                <div id="scorePlayer2" class="scoreBoard">Player2 Wins: 0 </div>
+                <div id="currPlay" class="scoreBoard"> </div>
+                <div id="display" class="scoreBoard"> </div>
+            </div>
         </div>
         <div id="leftPiece"> </div>
         <div id="board">

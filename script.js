@@ -2,8 +2,16 @@ console.log('Hello frontend');
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
-    var player1 = 'x';
-    var player2 = 'o';
+    var imgx = $('<img id="imgx" src="images/pieces.png">');
+
+    var imgo = $('<img id="imgo" src="images/pieces2.png">');
+
+    // img.appendTo('#imagediv')
+
+    var player1 = '<img class="piecez" src="images/pieces.png">';
+    var player2 = '<img class="piecez" src="images/pieces2.png">';
+    // var player1 = 'x';
+    // var player2 = 'o';
     var currentPlayer = player1;
     var scorePlayer1 = 0;
     var scorePlayer2 = 0;
@@ -16,21 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
         var columns = $('.columns');
         for (i = 0; i < columns.length; i++) {
             columns[i].addEventListener('click', columnClicked);
-            // console.log('columns have event listeners');
         }
-        // if ($('#1player').checked === true)
-        //     ai = player1;
-        //     aimove();
-        // }
         resetGame();
     }
-    //
-    // function aimove() {
-    //     var b = Math.floor(Math.random() * 7);
-    //     if (currentPlayer = ai) {
-    //         columnClicked('column' + b);
-    //     }
-    // }
 
     function columnClicked() {
         if (isGameOver === true) {
@@ -38,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         for (i = (this.children.length - 1); i > -1; i--) {
-            if (this.children[i].textContent !== player1 && this.children[i].textContent !== player2) {
-                this.children[i].textContent = currentPlayer;
+            if (this.children[i].innerHTML !== player1 && this.children[i].innerHTML !== player2) {
+                this.children[i].innerHTML = currentPlayer;
                 getColRow(this.children[i].id);
                 currentPlayer = changeTurn(currentPlayer);
                 piecePlayed = true;
@@ -50,9 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         if (piecePlayed === true) {
-            $('#currPlay')[0].textContent = currentPlayer + '\'s move';
+            $('#currPlay')[0].innerHTML = currentPlayer + '\'s move';
         } else {
-            $('#currPlay')[0].textContent = 'Column full; choose another move';
+            $('#currPlay')[0].innerHTML = 'Column full; choose another move';
         }
     }
 
@@ -67,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function changeTurn(currentPlayer) {
         currentPlayer = (currentPlayer === player1) ? player2 : player1;
-        $('#currPlay').textContent = 'Current player: ' + currentPlayer;
+        $('#currPlay').innerHTML = 'Current player: ' + currentPlayer;
         return currentPlayer;
     }
 
@@ -104,12 +100,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (cell1 === false || cell2 === false || cell3 === false && cell4 === false) {
             return false;
-        } else if (cell1.textContent === cell2.textContent &&
-            cell1.textContent === cell3.textContent &&
-            cell1.textContent === cell4.textContent &&
-            cell1.textContent !== '') {
+        } else if (cell1.innerHTML === cell2.innerHTML &&
+            cell1.innerHTML === cell3.innerHTML &&
+            cell1.innerHTML === cell4.innerHTML &&
+            cell1.innerHTML !== '') {
             console.log(currentPlayer + ' wins!!!');
-            $('#display')[0].textContent = currentPlayer + " wins!!!";
+            $('#display')[0].innerHTML = currentPlayer + " wins!!!";
             addPointToScore();
             gameOver();
             return true;
@@ -128,15 +124,15 @@ document.addEventListener("DOMContentLoaded", function() {
     function addPointToScore() {
         if (currentPlayer == player1) {
             scorePlayer1++;
-            $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
+            $('#scorePlayer1')[0].innerHTML = 'Player1 Wins: ' + scorePlayer1;
         } else {
             scorePlayer2++;
-            $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
+            $('#scorePlayer2')[0].innerHTML = 'Player2 Wins: ' + scorePlayer2;
         }
     }
 
     function catsGame() {
-        $('#display')[0].textContent = 'Nobody wins, you both lose a point!!!';
+        $('#display')[0].innerHTML = 'Nobody wins, you both lose a point!!!';
         console.log('cats game');
         subtractPointFromScore();
         gameOver();
@@ -146,8 +142,8 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('subtracting from score');
         scorePlayer1--;
         scorePlayer2--;
-        $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
-        $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
+        $('#scorePlayer1')[0].innerHTML = 'Player1 Wins: ' + scorePlayer1;
+        $('#scorePlayer2')[0].innerHTML = 'Player2 Wins: ' + scorePlayer2;
     }
 
     function gameOver() {
@@ -160,8 +156,8 @@ document.addEventListener("DOMContentLoaded", function() {
         currentPlayer = player1;
         clicks = 0;
         for (i = 0; i < $('.cell').length; i++) {
-            $('.cell')[i].textContent = '';
-            $('#display')[0].textContent = '';
+            $('.cell')[i].innerHTML = '';
+            $('#display')[0].innerHTML = '';
         }
         isGameOver = false;
     }
@@ -171,8 +167,21 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('reset match works');
         scorePlayer1 = 0;
         scorePlayer2 = 0;
-        $('#scorePlayer1')[0].textContent = 'Player1 Wins: ' + scorePlayer1;
-        $('#scorePlayer2')[0].textContent = 'Player2 Wins: ' + scorePlayer2;
+        $('#scorePlayer1')[0].innerHTML = 'Player1 Wins: ' + scorePlayer1;
+        $('#scorePlayer2')[0].innerHTML = 'Player2 Wins: ' + scorePlayer2;
         resetGame();
     }
 });
+
+//
+// function aimove() {
+//     var b = Math.floor(Math.random() * 7);
+//     if (currentPlayer = ai) {
+//         columnClicked('column' + b);
+//     }
+// }
+
+// if ($('#1player').checked === true)
+//     ai = player1;
+//     aimove();
+// }
