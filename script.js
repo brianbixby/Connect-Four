@@ -2,25 +2,35 @@ console.log('Hello frontend');
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
-    var player1 = 'x',
-        player2 = 'o',
-        unplayed = '';
+    var player1 = 'x';
+    var player2 = 'o';
     var currentPlayer = player1;
     var scorePlayer1 = 0;
     var scorePlayer2 = 0;
-    var ai;
-    var isGameOver = false;
-    var play = document.getElementById('play').addEventListener('click', startGame);
     var clicks = 0;
+    var isGameOver = false;
+    var ai;
+    var play = document.getElementById('play').addEventListener('click', startGame);
 
     function startGame() {
         var columns = $('.columns');
         for (i = 0; i < columns.length; i++) {
             columns[i].addEventListener('click', columnClicked);
-            console.log('columns have event listeners');
+            // console.log('columns have event listeners');
         }
-        resetGame();
     }
+    //     if ($('#1player').checked === true) {
+    //         ai = player1;
+    //         aimove();
+    //     }
+    //     resetGame();
+    // }
+    //
+    // function aimove() {
+    //   for(currentPlayer = ai) {
+    //     Math.random()
+    //   }
+    // }
 
     function columnClicked() {
         if (isGameOver === true) {
@@ -44,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             $('#currPlay')[0].textContent = 'Column full; choose another move';
         }
-        return piecePlayed;
     }
 
     function clickCounter() {
@@ -83,6 +92,8 @@ document.addEventListener("DOMContentLoaded", function() {
         areFourCellsEqual(col, row, col, row + 1, col, row + 2, col, row + 3);
         // checks diagonally
         areFourCellsEqual(col, row, col + 1, row + 1, col + 2, row + 2, col + 3, row + 3);
+        // checks diagonally
+        areFourCellsEqual(col, row, col - 1, row + 1, col - 2, row + 2, col - 3, row + 3);
     }
 
     function areFourCellsEqual(col1, row1, col2, row2, col3, row3, col4, row4) {
