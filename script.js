@@ -2,16 +2,9 @@ console.log('Hello frontend');
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
-    var imgx = $('<img id="imgx" src="images/pieces.png">');
-
-    var imgo = $('<img id="imgo" src="images/pieces2.png">');
-
-    // img.appendTo('#imagediv')
 
     var player1 = '<img class="piecez" src="images/pieces.png">';
     var player2 = '<img class="piecez" src="images/pieces2.png">';
-    // var player1 = 'x';
-    // var player2 = 'o';
     var currentPlayer = player1;
     var scorePlayer1 = 0;
     var scorePlayer2 = 0;

@@ -16,27 +16,39 @@ body {
   color: black;
   padding-bottom: 20px;
 }
-#nav {
+#score {
   font-family: 'Rock Salt', cursive;
   padding: 10px 0 50px 0;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+#currPlay {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 30px;
+  color: black;
+}
+#display {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 30px 0;
   color: black;
 }
 #board {
   width: 846px;
   height: 674px;
-  /*border: 2px solid black;*/
   display: inline-block;
   background: url('images/4.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  float: left;
 }
 
 .columns {
   height: 670;
-  width: 670;
   float: left;
   display: inline-block;
-  /*background-color: yellow;*/
 }
 .columns:hover {
   border: 0 solid black;
@@ -53,10 +65,6 @@ body {
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
-
-  /*border-width: 1px;
-  border-style: solid;
-  border-color: black;*/
 }
 .piecez {
   height: 100px;
@@ -80,5 +88,6 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: inline-block;
-  float: right;
+  float: left;
+  margin-bottom: 150px;
 }

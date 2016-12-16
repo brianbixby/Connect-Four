@@ -23,104 +23,109 @@
 
 <body>
     <div id="wrapper">
-        <div id="nav">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h1 id="topHeader"> Connect Four </h1>
-                </div>
-            </div>
-            <div id="score" class="row">
-                <div id="radioButtons">
-                    <label><input type="radio" id="2players" name="mode" value="2players" checked> 2 Players</label>
-                    <label><input type="radio" id="1player" name="mode" value="1player"> Play against the Computer</label>
-                </div>
-                <button id="play" type="submit">Play/Next </button>
-                <button id="restart" type="reset">Restart this game </button>
-                <button id="newMatch" type="reset">New Match</button>
-                <div id="scorePlayer1" class="scoreBoard">Player1 Wins: 0 </div>
-                <div id="scorePlayer2" class="scoreBoard">Player2 Wins: 0 </div>
-                <div id="currPlay" class="scoreBoard"> </div>
-                <div id="display" class="scoreBoard"> </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 id="topHeader"> Connect Four </h1>
             </div>
         </div>
-        <div id="leftPiece"> </div>
-        <div id="board">
-            <div class="columns" id="column0">
-
-                <div class="cell" id="0-5"></div>
-                <div class="cell" id="0-4"></div>
-                <div class="cell" id="0-3"></div>
-                <div class="cell" id="0-2"></div>
-                <div class="cell" id="0-1"></div>
-                <div class="cell" id="0-0"></div>
-
+        <div class="row">
+            <div class="col-xs-2">
+                <div id="score" class="row">
+                    <div id="radioButtons">
+                        <label><input type="radio" id="2players" name="mode" value="2players" checked> 2 Players</label>
+                        <label><input type="radio" id="1player" name="mode" value="1player"> Play against the Computer</label>
+                    </div>
+                    <button id="play" type="submit">Play/Next </button>
+                    <button id="restart" type="reset">Restart this game </button>
+                    <button id="newMatch" type="reset">New Match</button>
+                    <div id="currPlay" class="scoreBoard"> </div>
+                    <div id="display" class="scoreBoard"> </div>
+                    <div id="scorePlayer1" class="scoreBoard">Player1 Wins: 0 </div>
+                    <div id="scorePlayer2" class="scoreBoard">Player2 Wins: 0 </div>
+                </div>
             </div>
-            <div class="columns" id="column1">
+            <!-- </div> -->
+            <div class="col-xs-10">
+                <div id="leftPiece"> </div>
+                <div id="board">
+                    <div class="columns" id="column0">
 
-                <div class="cell" id="1-5"></div>
-                <div class="cell" id="1-4"></div>
-                <div class="cell" id="1-3"></div>
-                <div class="cell" id="1-2"></div>
-                <div class="cell" id="1-1"></div>
-                <div class="cell" id="1-0"></div>
+                        <div class="cell" id="0-5"></div>
+                        <div class="cell" id="0-4"></div>
+                        <div class="cell" id="0-3"></div>
+                        <div class="cell" id="0-2"></div>
+                        <div class="cell" id="0-1"></div>
+                        <div class="cell" id="0-0"></div>
 
+                    </div>
+                    <div class="columns" id="column1">
+
+                        <div class="cell" id="1-5"></div>
+                        <div class="cell" id="1-4"></div>
+                        <div class="cell" id="1-3"></div>
+                        <div class="cell" id="1-2"></div>
+                        <div class="cell" id="1-1"></div>
+                        <div class="cell" id="1-0"></div>
+
+                    </div>
+                    <div class="columns" id="column2">
+
+                        <div class="cell" id="2-5"></div>
+                        <div class="cell" id="2-4"></div>
+                        <div class="cell" id="2-3"></div>
+                        <div class="cell" id="2-2"></div>
+                        <div class="cell" id="2-1"></div>
+                        <div class="cell" id="2-0"></div>
+
+                    </div>
+                    <div class="columns" id="column3">
+
+                        <div class="cell" id="3-5"></div>
+                        <div class="cell" id="3-4"></div>
+                        <div class="cell" id="3-3"></div>
+                        <div class="cell" id="3-2"></div>
+                        <div class="cell" id="3-1"></div>
+                        <div class="cell" id="3-0"></div>
+
+                    </div>
+                    <div class="columns" id="column4">
+
+                        <div class="cell" id="4-5"></div>
+                        <div class="cell" id="4-4"></div>
+                        <div class="cell" id="4-3"></div>
+                        <div class="cell" id="4-2"></div>
+                        <div class="cell" id="4-1"></div>
+                        <div class="cell" id="4-0"></div>
+
+                    </div>
+                    <div class="columns" id="column5">
+
+                        <div class="cell" id="5-5"></div>
+                        <div class="cell" id="5-4"></div>
+                        <div class="cell" id="5-3"></div>
+                        <div class="cell" id="5-2"></div>
+                        <div class="cell" id="5-1"></div>
+                        <div class="cell" id="5-0"></div>
+
+                    </div>
+                    <div class="columns" id="column6">
+
+                        <div class="cell" id="6-5"></div>
+                        <div class="cell" id="6-4"></div>
+                        <div class="cell" id="6-3"></div>
+                        <div class="cell" id="6-2"></div>
+                        <div class="cell" id="6-1"></div>
+                        <div class="cell" id="6-0"></div>
+
+                    </div>
+                </div>
+                <div id="rightPiece"> </div>
+                <div id="footer">
+                </div>
             </div>
-            <div class="columns" id="column2">
-
-                <div class="cell" id="2-5"></div>
-                <div class="cell" id="2-4"></div>
-                <div class="cell" id="2-3"></div>
-                <div class="cell" id="2-2"></div>
-                <div class="cell" id="2-1"></div>
-                <div class="cell" id="2-0"></div>
-
-            </div>
-            <div class="columns" id="column3">
-
-                <div class="cell" id="3-5"></div>
-                <div class="cell" id="3-4"></div>
-                <div class="cell" id="3-3"></div>
-                <div class="cell" id="3-2"></div>
-                <div class="cell" id="3-1"></div>
-                <div class="cell" id="3-0"></div>
-
-            </div>
-            <div class="columns" id="column4">
-
-                <div class="cell" id="4-5"></div>
-                <div class="cell" id="4-4"></div>
-                <div class="cell" id="4-3"></div>
-                <div class="cell" id="4-2"></div>
-                <div class="cell" id="4-1"></div>
-                <div class="cell" id="4-0"></div>
-
-            </div>
-            <div class="columns" id="column5">
-
-                <div class="cell" id="5-5"></div>
-                <div class="cell" id="5-4"></div>
-                <div class="cell" id="5-3"></div>
-                <div class="cell" id="5-2"></div>
-                <div class="cell" id="5-1"></div>
-                <div class="cell" id="5-0"></div>
-
-            </div>
-            <div class="columns" id="column6">
-
-                <div class="cell" id="6-5"></div>
-                <div class="cell" id="6-4"></div>
-                <div class="cell" id="6-3"></div>
-                <div class="cell" id="6-2"></div>
-                <div class="cell" id="6-1"></div>
-                <div class="cell" id="6-0"></div>
-
-            </div>
-        </div>
-        <div id="rightPiece"> </div>
-        <div id="footer">
         </div>
     </div>
-
     <script type="text/javascript" src="script.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
