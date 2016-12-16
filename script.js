@@ -19,7 +19,23 @@ document.addEventListener("DOMContentLoaded", function() {
             columns[i].addEventListener('click', columnClicked);
         }
         resetGame();
+        // modeCheck();
     }
+
+    // function modeCheck() {
+    //     if ($('#2players').checked === true) {
+    //         columnClicked();
+    //     } else {
+    //         colClickedAi();
+    //     }
+    // }
+    //
+    // function aimove() {
+    //     var b = Math.floor(Math.random() * 7);
+    //     if (currentPlayer = ai) {
+    //         columnClicked('column' + b);
+    //     }
+    // }
 
     function columnClicked() {
         if (isGameOver === true) {
@@ -169,16 +185,3 @@ document.addEventListener("DOMContentLoaded", function() {
         resetGame();
     }
 });
-
-//
-// function aimove() {
-//     var b = Math.floor(Math.random() * 7);
-//     if (currentPlayer = ai) {
-//         columnClicked('column' + b);
-//     }
-// }
-
-// if ($('#1player').checked === true)
-//     ai = player1;
-//     aimove();
-// }
