@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var scorePlayer2 = 0;
     var clicks = 0;
     var isGameOver = false;
-    var ai;
+    // var ai = '<img class="piecez" src="images/pieces2.png">';
     var play = document.getElementById('play').addEventListener('click', startGame);
 
     function startGame() {
@@ -19,29 +19,24 @@ document.addEventListener("DOMContentLoaded", function() {
             columns[i].addEventListener('click', columnClicked);
         }
         resetGame();
-        // modeCheck();
+        modeCheck();
     }
 
-    // function modeCheck() {
-    //     if ($('#2players').checked === true) {
-    //         columnClicked();
-    //     } else {
-    //         colClickedAi();
-    //     }
-    // }
-    //
-    // function aimove() {
-    //     var b = Math.floor(Math.random() * 7);
-    //     if (currentPlayer = ai) {
-    //         columnClicked('column' + b);
-    //     }
-    // }
+    function modeCheck() {
+        console.log('mode check works');
+        if ($('#2players').checked === true) {
+            return true;
+        } else {
+            ai = player2;
+            console.log(ai);
+            return false, ai;
+        }
+    }
 
     function columnClicked() {
         if (isGameOver === true) {
             return;
         }
-
         for (i = (this.children.length - 1); i > -1; i--) {
             if (this.children[i].innerHTML !== player1 && this.children[i].innerHTML !== player2) {
                 this.children[i].innerHTML = currentPlayer;
@@ -68,8 +63,14 @@ document.addEventListener("DOMContentLoaded", function() {
     function clickCounter() {
         clicks += 1;
         console.log('counter works', clicks);
-        if (clicks > 41) {
-            catsGame();
+        if (modeCheck() === true) {
+            if (clicks > 41) {
+                catsGame();
+            }
+        } else {
+            if (clicks > 20) {
+                catsGame();
+            }
         }
         return clicks;
     }
@@ -77,7 +78,37 @@ document.addEventListener("DOMContentLoaded", function() {
     function changeTurn(currentPlayer) {
         currentPlayer = (currentPlayer === player1) ? player2 : player1;
         $('#currPlay').innerHTML = 'Current player: ' + currentPlayer;
+        if (modeCheck() === true && currentPlayer === player2) {
+            console.log('changeturn modecheck is true and ais turn');
+            aiMove();
+        }
         return currentPlayer;
+    }
+
+
+    function aiMove() {
+        var column = Math.floor(Math.random() * 7);
+        var row = Math.floor(Math.random() * 6);
+        var aiPiecePlayed = $('#' + column + '-' + row);
+        if (aiPiecePlayed.innerHTML !== player1 && aiPiecePlayed.innerHTML !== player2) {
+            aiPiecePlayed.innerHTML = currentPlayer;
+            checkForWin();
+            currentPlayer = changeTurn(currentPlayer);
+            piecePlayed = true;
+            clickCounter();
+        } else {
+            aiMove();
+        }
+
+        if (piecePlayed === true && isGameOver === false) {
+            $('#currPlay')[0].innerHTML = currentPlayer + '\'s move';
+        }
+        if (piecePlayed === false && isGameOver === false) {
+            $('#currPlay')[0].innerHTML = 'Column full; choose another move';
+        }
+        if (isGameOver === true) {
+            $('#currPlay')[0].innerHTML = "";
+        }
     }
 
     function getColRow(id) {
