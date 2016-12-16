@@ -38,13 +38,13 @@ body {
   color: black;
 }
 #play {
-  margin-left: 20px;
+  margin: 10px 0 0 20px;
 }
 #restart {
-  margin-left: 20px;
+  margin: 10px 0 0 20px;
 }
 #newMatch {
-  margin-left: 20px;
+  margin: 10px 0 0 20px;
 }
 #board {
   width: 846px;

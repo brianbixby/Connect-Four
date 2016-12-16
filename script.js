@@ -3,6 +3,7 @@ console.log('Hello frontend');
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM loaded");
 
+    document.body.styke.zoom = '90%';
     var player1 = '<img class="piecez" src="images/pieces.png">';
     var player2 = '<img class="piecez" src="images/pieces2.png">';
     var currentPlayer = player1;
