@@ -38,10 +38,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 piecePlayed = false;
             }
         }
-        if (piecePlayed === true) {
+        if (piecePlayed === true && isGameOver === false) {
             $('#currPlay')[0].innerHTML = currentPlayer + '\'s move';
-        } else {
+        }
+        if (piecePlayed === false && isGameOver === false) {
             $('#currPlay')[0].innerHTML = 'Column full; choose another move';
+        }
+        if (isGameOver === true) {
+            $('#currPlay')[0].innerHTML = "";
         }
     }
 
