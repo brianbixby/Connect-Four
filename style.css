@@ -1,13 +1,12 @@
+#wrapper {
+  margin: 0 auto;
+}
 body {
   display: flex;
   justify-content: center;
   background: url('images/7.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-}
-
-#wrapper {
-  margin: 0 auto;
 }
 #topHeader {
   font-size: 80px;
@@ -37,6 +36,15 @@ body {
   font-weight: bold;
   margin: 30px 0;
   color: black;
+}
+#play {
+  margin-left: 20px;
+}
+#restart {
+  margin-left: 20px;
+}
+#newMatch {
+  margin-left: 20px;
 }
 #board {
   width: 846px;
