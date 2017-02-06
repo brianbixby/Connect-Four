@@ -1,6 +1,7 @@
 #2players, #1player, #play, #restart, #newMatch, #currPlay, #display, #scorePlayer1, #scorePlayer2 {
   margin-left: 20px;
   text-align: right;
+  color: white;
 }
 
 body {
@@ -9,7 +10,6 @@ body {
   background: url('images/7.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  width: 90%;
 }
 
 #wrapper {
