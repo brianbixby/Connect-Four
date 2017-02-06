@@ -1,9 +1,6 @@
-console.log('Hello frontend');
-
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM loaded");
 
-    var player1 = '<img class="piecez" src="images/pieces.png">';
+    var player1 = '<img class=" piecez" src="images/pieces.png">';
     var player2 = '<img class="piecez" src="images/pieces2.png">';
     var currentPlayer = player1;
     var scorePlayer1 = 0;
@@ -12,6 +9,17 @@ document.addEventListener("DOMContentLoaded", function() {
     var isGameOver = false;
     var ai;
     var play = document.getElementById('play').addEventListener('click', startGame);
+
+    // media queries margin and below
+    // var player1Image = “pieces.png”;
+    // var player2Image = “pieces2.png”;
+    // Var currentPlayerImage = player1Image;
+    // 
+    // var playerPiece = document.createElement(“img”);
+    // playerPiece.src = currentPlayerImage;
+    // playerPiece.classList.add(“piecez”);
+    //
+    // this.children[i].appendChild(playerPiece);
 
     function startGame() {
         var columns = $('.columns');
