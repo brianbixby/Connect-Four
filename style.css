@@ -1,5 +1,6 @@
 #2players, #1player, #play, #restart, #newMatch, #currPlay, #display, #scorePlayer1, #scorePlayer2 {
   margin-left: 20px;
+  text-align: center;
 }
 
 body {
